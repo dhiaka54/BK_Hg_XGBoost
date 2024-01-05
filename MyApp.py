@@ -96,7 +96,7 @@ X_train_normal, X_test_normal, y_train_normal, y_test_normal = train_test_split(
 
 
 # Memuat kembali model dari file
-with open("model/model3.pkl", 'rb') as file:
+with open("model/xgb_model.pkl", 'rb') as file:
     loaded_model = pickle.load(file)
 
 y_pred_xgb = xgb_model.predict(X_test_normal)
