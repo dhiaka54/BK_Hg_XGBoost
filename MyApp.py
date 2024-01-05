@@ -7,7 +7,15 @@ import streamlit as st
 import time
 import pickle
 
-with open("data/hungarian.data", encoding='Latin1') as file:
+# with open("data/hungarian.data", encoding='Latin1') as file:
+#   lines = [line.strip() for line in file]
+!wget -c https://archive.ics.uci.edu/static/public/45/heart+disease.zip -O heart_disease.zip
+!unzip -o heart_disease.zip -d heart_disease
+!rm heart_disease.zip
+
+dir = 'heart_disease/hungarian.data'
+
+with open(dir, encoding='Latin1') as file:
   lines = [line.strip() for line in file]
 
 data = itertools.takewhile(
