@@ -101,10 +101,9 @@ with open('model3.pkl', 'wb') as file:
 with open('model3xgb.pkl', 'rb') as file:
     loaded_model = pickle.load(file)
 
-y_pred = loaded_model.predict(X)
-accuracy = accuracy_score(y, y_pred)
-accuracy = round((accuracy * 100), 2)
-
+y_pred_xgb = xgb_model.predict(X_test_normal)
+accuracy_xgb_smote_normal_Tun = round(accuracy_score(y_test_normal, y_pred_xgb),3)
+print("Accuracy:",accuracy_xgb_smote_normal_Tun)
 df_final = X
 df_final['target'] = y
 
