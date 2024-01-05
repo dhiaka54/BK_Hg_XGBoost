@@ -86,6 +86,14 @@ y = df_clean['target']
 smote = SMOTE(random_state=42)
 X, y = smote.fit_resample(X, y)
 
+from sklearn.model_selection import train_test_split
+# membagi fitur dan target menjadi data train dan test (untuk yang oversample + normalization)
+X_train_normal, X_test_normal, y_train_normal, y_test_normal = train_test_split(X_smote_resampled_normal,
+                                                                                y_smote_resampled,
+                                                                                test_size=0.2,
+                                                                                random_state=42,
+                                                                                stratify = y_smote_resampled)
+
 model = pickle.load(open("model/model3xgb.pkl", 'rb'))
 # model = pickle.load(open("model/modelXGB_rcv.pkl", 'rb'))
 
