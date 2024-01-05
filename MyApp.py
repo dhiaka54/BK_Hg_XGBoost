@@ -93,10 +93,15 @@ X_train_normal, X_test_normal, y_train_normal, y_test_normal = train_test_split(
                                                                                 random_state=42,
                                                                                 stratify = y)
 
-model = pickle.dump(open("model/model3xgb.pkl", 'wb'))
+# model = pickle.dump(open("model/model3xgb.pkl", 'wb'))
 # model = pickle.load(open("model/modelXGB_rcv.pkl", 'rb'))
+with open('model3xgb.pkl', 'wb') as file:
+    pickle.dump(xgb_model, file)
 
-y_pred = model.predict(X)
+with open('model3xgb.pkl', 'rb') as file:
+    loaded_model = pickle.load(file)
+
+y_pred = loaded_model.predict(X)
 accuracy = accuracy_score(y, y_pred)
 accuracy = round((accuracy * 100), 2)
 
