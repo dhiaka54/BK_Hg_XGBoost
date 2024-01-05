@@ -99,7 +99,7 @@ X_train_normal, X_test_normal, y_train_normal, y_test_normal = train_test_split(
 with open("model/xgb_model.pkl", 'rb') as file:
     loaded_model = pickle.load(file)
 
-y_pred_xgb = xgb_model.predict(X_test_normal)
+y_pred = loaded_model.predict(X)
 accuracy_xgb_smote_normal_Tun = round(accuracy_score(y_test_normal, y_pred_xgb),3)
 print("Accuracy:",accuracy_xgb_smote_normal_Tun)
 df_final = X
