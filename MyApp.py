@@ -95,7 +95,7 @@ X_train_normal, X_test_normal, y_train_normal, y_test_normal = train_test_split(
 
 # model = pickle.dump(open("model/model3xgb.pkl", 'wb'))
 # model = pickle.load(open("model/modelXGB_rcv.pkl", 'rb'))
-with open('model3xgb.pkl', 'wb') as file:
+with open('model3.pkl', 'wb') as file:
     pickle.dump(xgb_model, file)
 
 with open('model3xgb.pkl', 'rb') as file:
