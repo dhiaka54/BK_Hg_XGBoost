@@ -10,10 +10,6 @@ import pickle
 with open("data/hungarian.data", encoding='Latin1') as file:
   lines = [line.strip() for line in file]
 
-
-with open(dir, encoding='Latin1') as file:
-  lines = [line.strip() for line in file]
-
 data = itertools.takewhile(
   lambda x: len(x) == 76,
   (' '.join(lines[i:(i + 10)]).split() for i in range(0, len(lines), 10))
