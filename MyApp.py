@@ -86,22 +86,12 @@ y = df_clean['target']
 smote = SMOTE(random_state=42)
 X, y = smote.fit_resample(X, y)
 
-from sklearn.model_selection import train_test_split
-# membagi fitur dan target menjadi data train dan test (untuk yang oversample + normalization)
-X_train_normal, X_test_normal, y_train_normal, y_test_normal = train_test_split(X,y,
-                                                                                test_size=0.2,
-                                                                                random_state=42,
-                                                                                stratify = y)
+model = pickle.load(open("model/xgb_model.pkl", 'rb'))
 
+y_pred = model.predict(X)
+accuracy = accuracy_score(y, y_pred)
+accuracy = round((accuracy * 100), 2)
 
-
-# Memuat kembali model dari file
-with open("model/xgb_model.pkl", 'rb') as file:
-    loaded_model = pickle.load(file)
-
-y_pred = loaded_model.predict(X)
-accuracy_xgb_smote_normal_Tun = round(accuracy_score(y_test_normal, y_pred_xgb),3)
-print("Accuracy:",accuracy_xgb_smote_normal_Tun)
 df_final = X
 df_final['target'] = y
 
@@ -113,7 +103,7 @@ st.set_page_config(
   page_icon = ":heart:"
 )
 
-st.title("Heart Disease Predictor based on Hungarian data set")
+st.title("Hungarian Heart Disease")
 st.write(f"**_Model's Accuracy_** :  :green[**{accuracy}**]% (:red[_Do not copy outright_])")
 st.write("")
 
@@ -121,7 +111,6 @@ tab1, tab2 = st.tabs(["Single-predict", "Multi-predict"])
 
 with tab1:
   st.sidebar.header("**User Input** Sidebar")
-  st.sidebar.write("Dhiaka Shabrina Assyifa_A11.2020.13094")
 
   age = st.sidebar.number_input(label=":violet[**Age**]", min_value=df_final['age'].min(), max_value=df_final['age'].max())
   st.sidebar.write(f":orange[Min] value: :orange[**{df_final['age'].min()}**], :red[Max] value: :red[**{df_final['age'].max()}**]")
