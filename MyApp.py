@@ -240,6 +240,7 @@ def tab1():
 
 def tab2():
   st.header("Predict multiple data:")
+  st.write("Dhiaka Shabrina Assyifa - A11.2020.13094")
   sample_csv = df_final.iloc[:5, :-1].to_csv(index=False).encode('utf-8')
 
   st.write("")
@@ -301,6 +302,7 @@ def main():
     page_title = "Hungarian Heart Disease"
     page_icon = ":heart:"
     st.title('Heart Disease Predictor')
+    st.write("Dhiaka Shabrina Assyifa - A11.2020.13094")
     st.write('Selamat datang')
     st.write('Yuk Cek Kesehatan Anda')
 
