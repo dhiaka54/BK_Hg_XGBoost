@@ -295,8 +295,10 @@ def main():
     if 'tab' not in session_state:
         session_state.tab = 'main'
       
-    st.page_title = "Hungarian Heart Disease"
-    st.page_icon = ":heart:"
+    st.set_page_config(
+      page_title = "Hungarian Heart Disease",
+      page_icon = ":heart:"
+    )
     st.title('Heart Disease Predictor')
     st.write(f"**_Model's Accuracy_** :  :green[**{accuracy}**]% (:red[_Do not copy outright_])")
 
