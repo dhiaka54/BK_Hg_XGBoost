@@ -99,8 +99,6 @@ df_final['target'] = y
 # STREAMLIT      
 def tab1():
   st.sidebar.header("**User Input** Sidebar")
-  st.sidebar.write("Dhiaka Shabrina Assyifa - A11.2020.13094")
-
   age = st.sidebar.number_input(label=":violet[**Age**]", min_value=df_final['age'].min(), max_value=df_final['age'].max())
   st.sidebar.write(f":orange[Min] value: :orange[**{df_final['age'].min()}**], :red[Max] value: :red[**{df_final['age'].max()}**]")
   st.sidebar.write("")
@@ -239,7 +237,6 @@ def tab1():
 
 def tab2():
   st.header("Predict multiple data:")
-  st.write("Dhiaka Shabrina Assyifa - A11.2020.13094")
   sample_csv = df_final.iloc[:5, :-1].to_csv(index=False).encode('utf-8')
 
   st.write("")
