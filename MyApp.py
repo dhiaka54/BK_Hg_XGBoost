@@ -295,10 +295,11 @@ def main():
     if 'tab' not in session_state:
         session_state.tab = 'main'
       
-    page_title = "Hungarian Heart Disease"
+    st.page_title = "Hungarian Heart Disease"
+    st.page_icon = ":heart:"
     st.title('Heart Disease Predictor')
     st.write(f"**_Model's Accuracy_** :  :green[**{accuracy}**]% (:red[_Do not copy outright_])")
-    page_icon = ":heart:"
+
     # Menampilkan tab berdasarkan session_state
     if session_state.tab == 'main':
       st.write('Selamat datang')
