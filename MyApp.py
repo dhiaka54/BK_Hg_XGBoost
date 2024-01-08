@@ -98,7 +98,6 @@ df_final['target'] = y
 # ========================================================================================================================================================================================
 # STREAMLIT      
 def tab1():
-  st.write(f"**_Model's Accuracy_** :  :green[**{accuracy}**]% (:red[_Do not copy outright_])")
   st.sidebar.header("**User Input** Sidebar")
   st.sidebar.write("Dhiaka Shabrina Assyifa - A11.2020.13094")
 
@@ -298,21 +297,21 @@ def main():
     # Inisialisasi session_state jika belum ada
     if 'tab' not in session_state:
         session_state.tab = 'main'
-
-    page_title = "Hungarian Heart Disease"
+      
+    st.write(f"**_Model's Accuracy_** :  :green[**{accuracy}**]% (:red[_Do not copy outright_])")
     page_icon = ":heart:"
-    st.title('Heart Disease Predictor')
-    st.write("Dhiaka Shabrina Assyifa - A11.2020.13094")
-    st.write('Selamat datang')
-    st.write('Yuk Cek Kesehatan Anda')
-
     # Menampilkan tab berdasarkan session_state
     if session_state.tab == 'main':
-        # Menampilkan tombol untuk navigasi ke tab Single atau Multi-predict
-        if st.button("**Single-predict**", type="primary"):
-            session_state.tab = 'Single-predict'
-        if st.button("**Multi-predict**", type="secondary"):
-            session_state.tab = 'Multi-predict'
+      page_title = "Hungarian Heart Disease"
+      st.title('Heart Disease Predictor')
+      st.write("Dhiaka Shabrina Assyifa - A11.2020.13094")
+      st.write('Selamat datang')
+      st.write('Yuk Cek Kesehatan Anda')
+      # Menampilkan tombol untuk navigasi ke tab Single atau Multi-predict
+      if st.button("**Single-predict**", type="primary"):
+        session_state.tab = 'Single-predict'
+      if st.button("**Multi-predict**", type="secondary"):
+          session_state.tab = 'Multi-predict'
     elif session_state.tab == 'Single-predict':
         tab1()
     elif session_state.tab == 'Multi-predict':
