@@ -304,7 +304,6 @@ def main():
     page_icon = ":heart:"
     # Menampilkan tab berdasarkan session_state
     if session_state.tab == 'main':
-      st.write("Dhiaka Shabrina Assyifa - A11.2020.13094")
       st.write('Selamat datang')
       st.write('Yuk Cek Kesehatan Anda')
       # Menampilkan tombol untuk navigasi ke tab Single atau Multi-predict
@@ -316,6 +315,7 @@ def main():
         tab1()
     elif session_state.tab == 'Multi-predict':
         tab2()
+    st.write("By. Dhiaka Shabrina Assyifa - A11.2020.13094")
     # Menambahkan tombol Kembali ke Halaman Utama di setiap tab
     if session_state.tab != 'main':
       if st.button("Kembali ke Halaman Utama"):
