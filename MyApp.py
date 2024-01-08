@@ -96,20 +96,9 @@ df_final = X
 df_final['target'] = y
 
 # ========================================================================================================================================================================================
-
-# STREAMLIT
-st.set_page_config(
-  page_title = "Hungarian Heart Disease",
-  page_icon = ":heart:"
-)
-
-st.title("Hungarian Heart Disease")
-st.write(f"**_Model's Accuracy_** :  :green[**{accuracy}**]% (:red[_Do not copy outright_])")
-st.write("")
-
-tab1, tab2 = st.tabs(["Single-predict", "Multi-predict"])
-
-with tab1:
+# STREAMLIT      
+def tab1():
+  st.write(f"**_Model's Accuracy_** :  :green[**{accuracy}**]% (:red[_Do not copy outright_])")
   st.sidebar.header("**User Input** Sidebar")
   st.sidebar.write("Dhiaka Shabrina Assyifa - A11.2020.13094")
 
@@ -246,21 +235,16 @@ with tab1:
     elif prediction == 4:
       result = ":red[**Heart disease level 4**]"
 
-  st.write("")
-  st.write("")
   st.subheader("Prediction:")
   st.subheader(result)
 
-with tab2:
+def tab2():
   st.header("Predict multiple data:")
-
   sample_csv = df_final.iloc[:5, :-1].to_csv(index=False).encode('utf-8')
 
   st.write("")
   st.download_button("Download CSV Example", data=sample_csv, file_name='sample_heart_disease_parameters.csv', mime='text/csv')
-
-  st.write("")
-  st.write("")
+  
   file_uploaded = st.file_uploader("Upload a CSV file", type='csv')
 
   if file_uploaded:
@@ -307,3 +291,33 @@ with tab2:
       st.dataframe(uploaded_result)
     with col2:
       st.dataframe(uploaded_df)
+def main():
+    # Menyimpan state aplikasi menggunakan session_state
+    session_state = st.session_state
+    # Inisialisasi session_state jika belum ada
+    if 'tab' not in session_state:
+        session_state.tab = 'main'
+
+    page_title = "Hungarian Heart Disease"
+    page_icon = ":heart:"
+    st.title('Heart Disease Predictor')
+    st.write('Selamat datang')
+    st.write('Yuk Cek Kesehatan Anda')
+
+    # Menampilkan tab berdasarkan session_state
+    if session_state.tab == 'main':
+        # Menampilkan tombol untuk navigasi ke tab Single atau Multi-predict
+        if st.button("**Single-predict**", type="primary"):
+            session_state.tab = 'Single-predict'
+        if st.button("**Multi-predict**", type="secondary"):
+            session_state.tab = 'Multi-predict'
+    elif session_state.tab == 'Single-predict':
+        tab1()
+    elif session_state.tab == 'Multi-predict':
+        tab2()
+    # Menambahkan tombol Kembali ke Halaman Utama di setiap tab
+    if session_state.tab != 'main':
+      if st.button("Kembali ke Halaman Utama"):
+        session_state.tab = 'main'
+if __name__ == "__main__":
+    main()
